@@ -17,6 +17,6 @@ update_available_download: "Download at https://www.spigotmc.org/resources/pictu
 
 # Error Messages (Printed in console.)
 error_reload_config: "Could not access the configuration file."
-error_retrieving_avatar: "Could not retrieve avatar from URL. Reverting to fallback image."
+error_retrieving_avatar: "Could not retrieve avatar from URL. Reverting to fallback image. Cracked servers: Make sure you're using %pname% in the config."
 error_fallback_img: "Could not load fallback image."
 error_update_check: "Could not check for update."
