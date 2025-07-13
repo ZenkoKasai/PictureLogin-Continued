@@ -10,7 +10,7 @@ softdepend: [AuthMe, PlaceholderAPI]
 commands:
   picturelogin:
     description: Picture Login command.
-permisions:
+permissions:
   picturelogin.main:
     default: op
     description: Allows you to use /picturelogin
