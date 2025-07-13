@@ -78,9 +78,6 @@
     </dependencies>
 
     <build>
-        <directory>${dir}</directory>
-        <!--        <sourceDirectory>src/main/java</sourceDirectory>-->
-        <defaultGoal>clean install</defaultGoal>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
