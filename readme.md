@@ -19,9 +19,8 @@ Credit to...
 - bobacadodl for his Image Message Library
 - Crafatar for their avatar service
 
-Support [![Discord](https://img.shields.io/badge/discord-Nick's%20Place-orange)](https://discord.gg/fGzb73sPmV)
 ---
-You can reach out to me on the Spigot forums or here on GitHub, although the best way to reach me is on Discord.
+Any support will need to be done through Github issues. If enough people download I may create a discord for support. I am very busy so hang tight if you need assistance!
 
 License [![License](https://img.shields.io/github/license/Nicholas-Vo/PictureLogin-Continued)](https://github.com/Nicholas-Vo/PictureLogin-Continued/blob/master/LICENSE)
 ---
