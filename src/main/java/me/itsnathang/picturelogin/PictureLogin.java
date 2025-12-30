@@ -1,5 +1,6 @@
 package me.itsnathang.picturelogin;
 
+import me.itsnathang.picturelogin.chat.JoinLeaveAnnouncer;
 import me.itsnathang.picturelogin.commands.BaseCommand;
 import me.itsnathang.picturelogin.config.ConfigManager;
 import me.itsnathang.picturelogin.listeners.JoinListener;
@@ -21,17 +22,23 @@ public class PictureLogin extends JavaPlugin {
         // load config & languages file
         configManager = new ConfigManager(this);
 
+        // Config-driven multi-line join/leave announcer
+        getServer().getPluginManager().registerEvents(
+                new JoinLeaveAnnouncer(configManager),
+                this
+        );
+
         // Register Plugin Hooks
         new Hooks(getServer().getPluginManager(), configManager, getLogger());
 
         // Initialize Picture Utility
         pictureUtil = new PictureUtil(this);
 
-        // register Listeners
+        // register Listeners (picture login image)
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
 
-        // (only register leave listener if enabled in config)
-        if (configManager.getBoolean("show-leave-message", false)) {
+        // register leave picture (separate from normal leave chat messages)
+        if (configManager.getBoolean("leave-picture.enabled", true)) {
             getServer().getPluginManager().registerEvents(new QuitListener(this), this);
         }
 
@@ -40,7 +47,7 @@ public class PictureLogin extends JavaPlugin {
 
         // bStats integration
         if (configManager.getBoolean("metrics", true)) {
-            new Metrics(this, 14892); // 14892 is the bStats plugin ID for PictureLogin
+            new Metrics(this, 14892);
         }
     }
 

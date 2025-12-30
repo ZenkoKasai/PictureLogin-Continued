@@ -9,198 +9,225 @@
 #                                                |___/          #
 #################################################################
 
-#############
-# Messsages
-########
-# Each message is a line, leave blank for a blank line
-# Chat codes supported
-########
-# Variables:
-# %pname%       - Joined player's name (no formatting)
-# %online%      - Players online
-# %max%         - Maximum players
-# %motd%        - MOTD
-# %displayname% - Joined player's display name
+############################################################
+# IMAGE-BASED JOIN MESSAGE (MAIN LOGIN IMAGE)
+############################################################
+# This section controls the IMAGE that appears when a player
+# joins the server.
+#
+# IMPORTANT:
+# - These messages appear NEXT TO the image
+# - A MAXIMUM of 8 lines is allowed
+#   (this matches the height of the player head image)
+#
+# Supported placeholders:
+# %pname%        - Player username
+# %displayname% - Player display name (with formatting)
+# %online%      - Current players online
+# %max%         - Maximum player slots
+# %motd%        - Server MOTD
+#
+# PlaceholderAPI placeholders also work if installed.
+############################################################
 
-########
-# NOTE: You may also use variables from the plugin
-#       PlaceholderAPI if it is installed.
-
-# Do not add additional messages to this list!
-# Max of 8 allowed (that's the length of the player head image)
 messages:
-    - ''
-    - '&7Welcome to &e&lGeneric Server Name&7!'
-    - ''
-    - '&7» [&e%online%&7/&e%max%&7] player(s) online.'
-    - '&7» &aNEW: &7Feature X added!'
-    - ''
-    - '&7» &aPictureLogin &7by &aNathanG&7.'
-    - ''
+  - ''
+  - '&7Welcome to &e&lGeneric Server Name&7!'
+  - ''
+  - '&7» [&e%online%&7/&e%max%&7] player(s) online.'
+  - '&7» &aNEW: &7Feature X added!'
+  - ''
+  - '&7» &aPictureLogin &7by &aNathanG&7.'
+  - ''
 
-#############
-# First Join Message
-########
-# Set to true to send a different messsage
-# when a player joins for the first
-# time. Refer to above for variables.
+
+############################################################
+# FIRST JOIN IMAGE (NEW PLAYERS ONLY)
+############################################################
+# If enabled, new players will see a DIFFERENT image message
+# the first time they ever join the server.
+#
+# This does NOT affect normal chat join messages.
+############################################################
 
 show-first-join: true
 
-# Do not add additional messages to this list - Max of 8 allowed
 first-join-messages:
-    - ''
-    - '&7Welcome to &e&lGeneric Server Name&7!'
-    - ''
-    - '&7» [&e%online%&7/&e%max%&7] player(s) online.'
-    - '&7» &aNEW: &7Feature X added!'
-    - ''
-    - '&7Please welcome &a%pname% &7to the server!'
-    - ''
+  - ''
+  - '&7Welcome to &e&lGeneric Server Name&7!'
+  - ''
+  - '&7» [&e%online%&7/&e%max%&7] player(s) online.'
+  - '&7» &aNEW: &7Feature X added!'
+  - ''
+  - '&7Please welcome &a%pname% &7to the server!'
+  - ''
 
-#############
-# Leave Messages
-########
-# Set to true to send a
-# message whenever a player
-# leaves the server. Refer
-# to top for variables.
 
-show-leave-message: false
+############################################################
+# IMAGE-BASED LEAVE MESSAGE (OPTIONAL)
+############################################################
+# This controls whether an IMAGE is shown when a player leaves.
+#
+# NOTE:
+# - This is separate from normal chat leave messages
+# - If disabled, no image will be shown on leave
+############################################################
 
-# Do not add additional messages to this list - Max of 8 allowed
+leave-picture:
+  enabled: false
+
 leave-messages:
-    - ''
-    - '&e%pname% &7has left the server!'
-    - ''
-    - '&7» [&e%online%&7/&e%max%&7] player(s) online.'
-    - '&7» &aNEW: &7Feature X added!'
-    - ''
-    - '&7» &aPictureLogin &7by &aNathanG&7.'
-    - ''
+  - ''
+  - '&e%pname% &7has left the server!'
+  - ''
+  - '&7» [&e%online%&7/&e%max%&7] player(s) online.'
+  - '&7» &aNEW: &7Feature X added!'
+  - ''
+  - '&7» &aPictureLogin &7by &aNathanG&7.'
+  - ''
 
-#############
-# Message delay
-########
-# Whether to delay the sending of all picture messages.
-#
-# This delay is in server ticks! For reference, there are 20 server ticks in 1 second.
-#
-# For example: To set a delay of 2 seconds, set message-delay to 40.
 
+############################################################
+# NORMAL CHAT JOIN / LEAVE MESSAGES (NO IMAGES)
+############################################################
+# This section controls standard chat messages that appear
+# when players join or leave.
+#
+# These messages:
+# - Are multi-line
+# - Are NOT images
+# - Are visible to everyone (unless configured otherwise)
+#
+# This is the recommended way to handle join/leave chat.
+############################################################
+
+join-leave:
+  enabled: true
+
+  # If true:
+  # - The default Minecraft "Player joined the game" message
+  #   is fully suppressed
+  #
+  # Strongly recommended to keep this ON.
+  suppress-vanilla: true
+
+  # If true:
+  # - The player who joined/left also sees the message
+  #
+  # If false:
+  # - Only OTHER players see it
+  include-actor: true
+
+  join:
+    enabled: true
+    message:
+      - ""
+      - "&7&m-----------------------------"
+      - "&a+ &f%player% &7joined the server"
+      - "&7Welcome!"
+      - "&7&m-----------------------------"
+      - ""
+
+  leave:
+    enabled: true
+    message:
+      - ""
+      - "&7&m-----------------------------"
+      - "&c- &f%player% &7left the server"
+      - "&7See you next time!"
+      - "&7&m-----------------------------"
+      - ""
+
+
+############################################################
+# MESSAGE DELIVERY OPTIONS (IMAGE ONLY)
+############################################################
+# These options affect IMAGE messages only.
+############################################################
+
+# Delay (in server ticks) before sending image messages
+# 20 ticks = 1 second
 message-delay: 0
 
-#############
-# Fallback
-########
-# If enabled, then a fallback image
-# will be used if the plugin cannot
-# load an avatar.
-# Fallback image located at:
-# > plugins/PictureLogin/fallback.png
-
-fallback: true
-
-#############
-# Clear Chat
-########
-# Set to true to clear the chat
-# before the message is sent.
-# Acceptable: [true|false]
-
+# Clears the player's chat before showing the image
 clear-chat: false
 
-#############
-# Center Text
-########
-# Whether to center the text beside the image.
-# Acceptable: [true|false]
-
+# Centers the text vertically beside the image
 center-text: false
 
-#############
-# Block join / leave messages
-########
-# Set to true to block
-# the default login
-# and logout messages.
+# If true:
+# - Image messages are only shown to the player joining
+player-only: true
+
+
+############################################################
+# IMAGE RENDERING SETTINGS
+############################################################
+# These control how the avatar image is drawn in chat.
+############################################################
+
+# Character style used to draw the image
+# Options:
+# BLOCK, DARK_SHADE, MEDIUM_SHADE, LIGHT_SHADE
+character: 'BLOCK'
+
+# URL used to fetch the avatar image
+# Default uses UUID (recommended for online-mode servers)
+url: 'https://minepic.org/avatar/8/%uuid%'
+
+# For cracked/offline servers, use this instead:
+# url: 'https://minepic.org/avatar/8/%pname%'
+
+# If enabled:
+# - Uses a fallback image if the avatar cannot load
+fallback: true
+
+# If true:
+# - Image generation happens asynchronously
+# - Reduces lag, but image may appear slightly delayed
+async: true
+
+
+############################################################
+# PERMISSIONS
+############################################################
+# If true:
+# - Players must have permission `picturelogin.show`
+#   to see image messages
+require-permission: true
+
+
+############################################################
+# LEGACY COMPATIBILITY FLAGS
+############################################################
+# These settings are kept for backward compatibility.
+#
+# They are IGNORED if:
+# join-leave.suppress-vanilla = true
+#
+# Safe to leave false.
+############################################################
 
 block-join-message: false
 block-leave-message: false
 
-#############
-# Show to player only
-########
-# Set to true to only send
-# the login message to
-# the player that joins.
 
-player-only: true
-
-#############
-# Image Character
-######## 
-# Change this to change what
-# character the image is made of.
-########
-# Acceptable:
-# - BLOCK
-# - DARK_SHADE
-# - MEDIUM_SHADE
-# - LIGHT_SHADE
-
-character: 'BLOCK'
-
-#############
-# URL
-######## 
-# Where to get the picture from.
-# By default, this is set to minepic.org
-# You should probably leave this where it is.
-########
-# Variables:
-# %uuid%   - Joined player's UUID
-# %pname%  - Joined player's Username
-
-url: 'https://minepic.org/avatar/8/%uuid%'
-
-# CRACKED SERVERS - USE THIS URL:
-# url: 'https://minepic.org/avatar/8/%pname%'
-
-#############
-# Async
-########
-# Setting to true makes the picture generate
-# on an async thread. This has less performance
-# impact, but may delay the picture message.
-
-async: true
-
-#############
-# Require Permission
-########
-# Set to false to show the message
-# for every player that logs in,
-# regardless of whether or not
-# they have the permission picturelogin.show
-
-require-permission: true
-
-#############
-# Hook Plugins
-########
-# Set to false to not allow Picture Login
-# to hook into certain plugins.
+############################################################
+# PLUGIN HOOKS
+############################################################
+# Controls integration with other plugins.
+############################################################
 
 hooks:
   PlaceholderAPI: true
   AuthMe: true
 
-#############
-# Metrics
-########
-# Allow this plugin to send anonymous metrics
-# to bStats? https://bstats.org/
-# Set to false to disable.
+
+############################################################
+# METRICS (bStats)
+############################################################
+# Anonymous usage statistics.
+# No personal data is collected.
+############################################################
 
 metrics: true

@@ -28,10 +28,6 @@ public class QuitListener implements Listener {
             return;
         }
 
-        if (config.getBoolean("block-leave-message", true)) {
-            event.setQuitMessage(null);
-        }
-
         ImageMessage picture_message = pictureUtil.getLeaveMessage(player);
         if (picture_message == null) {
             return;

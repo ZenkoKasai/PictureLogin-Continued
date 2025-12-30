@@ -16,7 +16,6 @@ public class JoinListener implements Listener {
     private final PictureLogin plugin;
     private final ConfigManager config;
     private final PictureUtil utils;
-    private Player player;
 
     public JoinListener(PictureLogin plugin) {
         this.plugin = plugin;
@@ -26,7 +25,7 @@ public class JoinListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onJoin(PlayerJoinEvent event) {
-        this.player = event.getPlayer();
+        Player player = event.getPlayer();
 
         // block the default join message
         if (config.getBoolean("block-join-message", false)) {
@@ -34,47 +33,26 @@ public class JoinListener implements Listener {
         }
 
         if (Hooks.AUTHME) {
-            authMeLogin();
+            authMeLogin(player);
         } else {
             utils.sendImage(player);
         }
     }
 
-    private void authMeLogin() {
+    private void authMeLogin(Player player) {
         new BukkitRunnable() {
             @Override
             public void run() {
-                // Stop if player left the server
                 if (player == null || !player.isOnline()) {
-                    this.cancel();
+                    cancel();
+                    return;
                 }
 
-                // Check for authentication
                 if (AuthMeApi.getInstance().isAuthenticated(player)) {
                     utils.sendImage(player);
-                    this.cancel();
+                    cancel();
                 }
             }
-
         }.runTaskTimer(plugin, 0L, 20L);
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

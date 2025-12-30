@@ -6,13 +6,13 @@
 
     <groupId>me.nickv</groupId>
     <artifactId>PictureLogin-Continued</artifactId>
-    <version>1.0.8</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>Picture Login</name>
 
     <properties>
-        <author>NathanG, _NickV</author>
+        <author>NathanG, _NickV, ZenkoKasai</author>
         <mainClass>me.itsnathang.picturelogin.PictureLogin</mainClass>
     </properties>
 
