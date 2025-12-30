@@ -27,4 +27,11 @@ jobs:
       - name: Upload JAR to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: target/Picturelogin-Continued-*.jar
+          files: target/*.jar
+      
+      - name: Debug Maven output 
+        run: |
+          echo "== target directory ==" 
+          ls -lah target || true 
+          echo "++ jars found ++" 
+          find . -type f -name "*.jar"
