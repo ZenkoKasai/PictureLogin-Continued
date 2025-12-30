@@ -1,4 +1,4 @@
-PictureLogin-Continued-Again [![Version](https://img.shields.io/badge/version-1.0.4-blue)](https://www.spigotmc.org/resources/picturelogin-continued.101216/)
+PictureLogin-Continued-Again [![Version](https://img.shields.io/badge/version-1.1.0-blue)](https://github.com/ZenkoKasai/PictureLogin-Continued/releases/tag/v.1.1.0)
 ===
 
 This is a popular plugin for Minecraft servers (over 50,000 downloads) that has sadly been unsupported for a while.
