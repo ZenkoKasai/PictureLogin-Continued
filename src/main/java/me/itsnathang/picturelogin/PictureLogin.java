@@ -38,11 +38,9 @@ public class PictureLogin extends JavaPlugin {
         // register /picturelogin command
         getCommand("picturelogin").setExecutor(new BaseCommand(this));
 
-        }
-
         // bStats integration
         if (configManager.getBoolean("metrics", true)) {
-            new Metrics(this, 14892); // 2225 is the bStats plugin ID for PictureLogin
+            new Metrics(this, 14892); // 14892 is the bStats plugin ID for PictureLogin
         }
     }
 
