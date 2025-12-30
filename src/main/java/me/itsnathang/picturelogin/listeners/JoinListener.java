@@ -28,7 +28,9 @@ public class JoinListener implements Listener {
         Player player = event.getPlayer();
 
         // block the default join message
-        if (config.getBoolean("block-join-message", false)) {
+        if (config.getBoolean("join-leave.suppress-vanilla", true)) {
+            event.setJoinMessage(null);
+        } else if (config.getBoolean("block-join-message", false)) {
             event.setJoinMessage(null);
         }
 

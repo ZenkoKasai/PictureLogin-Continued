@@ -31,7 +31,7 @@ public final class JoinLeaveAnnouncer implements Listener {
         if (!config.getBoolean("join-leave.join.enabled", true)) return;
 
         Player actor = event.getPlayer();
-        List<String> lines = config.getConfig().getStringList("join-leave.join.message");
+        List<String> lines = config.getStringList("join-leave.join.message");
         broadcastLines(lines, actor, config.getBoolean("join-leave.include-actor", true));
     }
 
@@ -46,7 +46,7 @@ public final class JoinLeaveAnnouncer implements Listener {
         if (!config.getBoolean("join-leave.leave.enabled", true)) return;
 
         Player actor = event.getPlayer();
-        List<String> lines = config.getConfig().getStringList("join-leave.leave.message");
+        List<String> lines = config.getStringList("join-leave.join.message");
         broadcastLines(lines, actor, config.getBoolean("join-leave.include-actor", true));
     }
 

@@ -20,7 +20,7 @@ public class QuitListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        if (!config.getBoolean("show-leave-message", true))
+        if (!config.getBoolean("leave-picture.enabled", false))
             return;
 
         Player player = event.getPlayer();
