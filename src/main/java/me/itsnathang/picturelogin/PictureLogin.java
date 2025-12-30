@@ -6,7 +6,6 @@ import me.itsnathang.picturelogin.listeners.JoinListener;
 import me.itsnathang.picturelogin.listeners.QuitListener;
 import me.itsnathang.picturelogin.util.Hooks;
 import me.itsnathang.picturelogin.util.PictureUtil;
-import me.itsnathang.picturelogin.util.Updater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -39,9 +38,6 @@ public class PictureLogin extends JavaPlugin {
         // register /picturelogin command
         getCommand("picturelogin").setExecutor(new BaseCommand(this));
 
-        // Update Checker
-        if (configManager.getBoolean("update-check", true)) {
-            new Updater(getLogger(), getDescription().getVersion());
         }
 
         // bStats integration
